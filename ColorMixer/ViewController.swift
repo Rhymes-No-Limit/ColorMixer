@@ -26,6 +26,7 @@ final class ViewController: UIViewController {
     
     @IBAction func sliderAction(_ sender: UISlider) {
         setColor()
+        
         switch sender {
         case redSlider:
             redLabel.text = string(from: redSlider)
@@ -38,9 +39,9 @@ final class ViewController: UIViewController {
     
     private func setColor() {
         colorView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
+            red: redSlider.value.cgFloat(),
+            green: greenSlider.value.cgFloat(),
+            blue: blueSlider.value.cgFloat(),
             alpha: 1
         )
     }
@@ -50,3 +51,8 @@ final class ViewController: UIViewController {
         
 }
 
+extension Float {
+    func cgFloat() -> CGFloat {
+        CGFloat(self)
+    }
+}
